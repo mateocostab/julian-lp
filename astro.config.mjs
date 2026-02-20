@@ -11,7 +11,7 @@ export default defineConfig({
       accessToken: env.STORYBLOK_DELIVERY_API_TOKEN,
       bridge: true,
       apiOptions: {
-        region: 'eu',
+        region: 'us',
       },
       components: {
         page: 'storyblok/Page',
