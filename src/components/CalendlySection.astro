@@ -1,0 +1,97 @@
+---
+---
+
+<section class="calendly-section" id="reserva">
+  <div class="container calendly-content">
+    <div class="calendly-header" data-animate>
+      <h2 class="calendly-headline">Reserva Tu Cupo</h2>
+      <p class="calendly-subheadline">
+        Clase privada y gratuita — Solo <strong>10 cupos</strong> disponibles
+      </p>
+    </div>
+
+    <div class="calendly-widget-wrap" data-animate>
+      <!-- Calendly inline widget -->
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com"
+        style="min-width:320px;height:700px;"
+      ></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+
+    <p class="calendly-urgency" data-animate>
+      Una vez se llenen los 10 cupos, no habrá más disponibilidad.
+    </p>
+  </div>
+</section>
+
+<style>
+  .calendly-section {
+    background: var(--lila);
+    padding: var(--section-padding);
+  }
+
+  .calendly-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .calendly-header {
+    margin-bottom: 36px;
+  }
+
+  .calendly-headline {
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .calendly-subheadline {
+    font-size: 18px;
+    color: var(--white);
+    opacity: 0.9;
+  }
+
+  .calendly-subheadline strong {
+    color: var(--amarillo);
+    font-weight: 700;
+  }
+
+  .calendly-widget-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .calendly-inline-widget {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .calendly-urgency {
+    margin-top: 24px;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 600;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 768px) {
+    .calendly-section {
+      padding: var(--section-padding-mobile);
+    }
+
+    .calendly-subheadline {
+      font-size: 16px;
+    }
+
+    .calendly-inline-widget {
+      height: 600px !important;
+      min-width: 280px !important;
+    }
+  }
+</style>

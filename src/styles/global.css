@@ -1,0 +1,203 @@
+/* ===== CSS Custom Properties ===== */
+:root {
+  --lila: #a6aede;
+  --amarillo: #f1ea9d;
+  --azul-oscuro: #5f679e;
+  --light-blue: #e9eaf3;
+  --white: #ffffff;
+  --dark: #1a1a2e;
+  --text-dark: #2d2d44;
+  --text-muted: #6b6b80;
+  --font: 'Montserrat', sans-serif;
+  --max-width: 1120px;
+  --section-padding: 80px 24px;
+  --section-padding-mobile: 56px 16px;
+}
+
+/* ===== CSS Reset ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== Animation Keyframes ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ===== Scroll Animation Classes ===== */
+[data-animate] {
+  opacity: 0;
+}
+
+[data-animate].animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+[data-animate="fade-in"].animate-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+[data-animate="slide-left"].animate-in {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+[data-animate="slide-right"].animate-in {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+[data-animate="scale"].animate-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Staggered delays */
+[data-delay="1"] { animation-delay: 100ms !important; }
+[data-delay="2"] { animation-delay: 200ms !important; }
+[data-delay="3"] { animation-delay: 300ms !important; }
+[data-delay="4"] { animation-delay: 400ms !important; }
+
+/* ===== CTA Button ===== */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  background: var(--amarillo);
+  color: var(--azul-oscuro);
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 48px 16px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .cta-button {
+    padding: 14px 32px;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+  }
+}

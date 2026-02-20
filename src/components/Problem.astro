@@ -1,0 +1,101 @@
+---
+const pains = [
+  'Haces descuentos sin saber si realmente ganas dinero',
+  'No tienes un calendario ni fases claras para tu campaña',
+  'Tu comunicación se pierde entre miles de marcas gritando "DESCUENTO"',
+  'Tu tienda no está optimizada para el pico de tráfico',
+];
+---
+
+<section class="problem">
+  <div class="container problem-content">
+    <h2 class="problem-headline" data-animate>El descuento no es suficiente.</h2>
+    <p class="problem-body" data-animate>
+      La mayoría de marcas simplemente bajan precios y esperan que el tráfico haga el trabajo.
+      Sin un sistema probado, estás dejando dinero en la mesa — y el Hot Sale se convierte en una
+      <strong>lotería, no en una estrategia.</strong>
+    </p>
+    <ul class="pain-list">
+      {pains.map((pain, i) => (
+        <li class="pain-item" data-animate data-delay={i}>
+          <span class="pain-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 0L12.2 7.8L20 10L12.2 12.2L10 20L7.8 12.2L0 10L7.8 7.8L10 0Z" fill="#5f679e"/>
+            </svg>
+          </span>
+          <span>{pain}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .problem {
+    background: var(--white);
+    padding: var(--section-padding);
+  }
+
+  .problem-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .problem-headline {
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--azul-oscuro);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .problem-body {
+    font-size: 17px;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .problem-body strong {
+    color: var(--azul-oscuro);
+  }
+
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 16px;
+    color: var(--text-dark);
+    background: var(--light-blue);
+    padding: 18px 24px;
+    border-radius: 10px;
+    border-left: 4px solid var(--azul-oscuro);
+    line-height: 1.5;
+  }
+
+  .pain-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .problem {
+      padding: var(--section-padding-mobile);
+    }
+
+    .problem-body {
+      font-size: 15px;
+    }
+
+    .pain-item {
+      font-size: 15px;
+      padding: 14px 18px;
+    }
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+---
+
+<section class="speaker">
+  <div class="container speaker-content">
+    <div class="speaker-photo-wrap" data-animate="slide-left">
+      <div class="speaker-photo">
+        <img
+          src="/assets/julian-mora.png"
+          alt="Julián Mora — Co-founder & CMO de Lummia"
+          width="280"
+          height="280"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <div class="speaker-info" data-animate="slide-right">
+      <span class="speaker-label">Tu instructor</span>
+      <h2 class="speaker-name">Julián Mora</h2>
+      <p class="speaker-title">Co-founder & CMO de Lummia</p>
+      <p class="speaker-bio">
+        Lummia ha facturado más de <strong>$9.5M USD</strong> en ecommerce. Sus mejores días de ventas
+        han sido en fechas promocionales, donde ha perfeccionado un sistema que le permite escalar de
+        forma rentable y agresiva. En esta clase privada, Julián compartirá los 4 pilares que han
+        hecho posible estos resultados.
+      </p>
+
+      <div class="speaker-stats">
+        <div class="speaker-stat">
+          <span class="stat-value">$9.5M+</span>
+          <span class="stat-label">Facturados</span>
+        </div>
+        <div class="speaker-stat">
+          <span class="stat-value">14.5x</span>
+          <span class="stat-label">ROAS</span>
+        </div>
+        <div class="speaker-stat">
+          <span class="stat-value">+777%</span>
+          <span class="stat-label">Ventas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .speaker {
+    background: var(--white);
+    padding: var(--section-padding);
+  }
+
+  .speaker-content {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .speaker-photo-wrap {
+    flex-shrink: 0;
+  }
+
+  .speaker-photo {
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+  }
+
+  .speaker-photo img {
+    width: 100%;
+    height: auto;
+  }
+
+  .speaker-info {
+    flex: 1;
+  }
+
+  .speaker-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--lila);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .speaker-name {
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--azul-oscuro);
+    margin-bottom: 4px;
+  }
+
+  .speaker-title {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .speaker-bio {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .speaker-bio strong {
+    color: var(--azul-oscuro);
+    font-weight: 700;
+  }
+
+  .speaker-stats {
+    display: flex;
+    gap: 24px;
+  }
+
+  .speaker-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--light-blue);
+    padding: 16px 24px;
+    border-radius: 10px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .speaker {
+      padding: var(--section-padding-mobile);
+    }
+
+    .speaker-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 32px;
+    }
+
+    .speaker-photo {
+      width: 200px;
+      height: 200px;
+    }
+
+    .speaker-stats {
+      justify-content: center;
+    }
+
+    .speaker-stat {
+      padding: 12px 18px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+    }
+
+    .speaker-bio {
+      font-size: 15px;
+    }
+  }
+</style>

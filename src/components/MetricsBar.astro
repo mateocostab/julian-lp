@@ -1,0 +1,130 @@
+---
+const metrics = [
+  { prefix: '$', value: 9.5, suffix: 'M USD', label: 'facturados por Lummia', decimals: 1 },
+  { prefix: '$', value: 1.5, suffix: 'M USD', label: 'en el último Black Friday', decimals: 1 },
+  { prefix: '', value: 14.5, suffix: 'x', label: 'ROAS en fechas promocionales', decimals: 1 },
+  { prefix: '+', value: 777, suffix: '%', label: 'en ventas vs. período anterior', decimals: 0 },
+];
+---
+
+<section class="metrics" data-animate>
+  <div class="container metrics-grid">
+    {metrics.map((metric) => (
+      <div class="metric-card">
+        <span
+          class="metric-value"
+          data-counter
+          data-prefix={metric.prefix}
+          data-target={metric.value}
+          data-suffix={metric.suffix}
+          data-decimals={metric.decimals}
+        >
+          {metric.prefix}0{metric.suffix}
+        </span>
+        <span class="metric-label">{metric.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  function animateCounters() {
+    const counters = document.querySelectorAll('[data-counter]');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseFloat(el.dataset.target || '0');
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const decimals = parseInt(el.dataset.decimals || '0');
+            const duration = 2000;
+            const start = performance.now();
+
+            function update(now: number) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = target * eased;
+              el.textContent = `${prefix}${current.toFixed(decimals)}${suffix}`;
+
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              }
+            }
+
+            requestAnimationFrame(update);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    counters.forEach((counter) => observer.observe(counter));
+  }
+
+  animateCounters();
+</script>
+
+<style>
+  .metrics {
+    background: var(--azul-oscuro);
+    padding: 48px 24px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 12px;
+  }
+
+  .metric-value {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--amarillo);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 14px;
+    color: var(--white);
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .metrics {
+      padding: 36px 16px;
+    }
+
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .metric-card {
+      padding: 16px 8px;
+    }
+
+    .metric-label {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

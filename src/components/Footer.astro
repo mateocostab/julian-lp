@@ -1,0 +1,46 @@
+---
+---
+
+<footer class="footer">
+  <div class="container footer-content">
+    <img class="footer-logo" src="/assets/logo-clase.png" alt="Lummia" width="120" height="120" />
+    <p class="footer-copy">&copy; 2026 Lummia. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--azul-oscuro);
+    padding: 32px 24px;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--white);
+    opacity: 0.6;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 24px 16px;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>

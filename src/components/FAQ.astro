@@ -1,0 +1,131 @@
+---
+const faqs = [
+  {
+    question: '¿Es realmente gratis?',
+    answer: 'Sí, 100% gratuita. Sin cargos ocultos.',
+  },
+  {
+    question: '¿Para quién es esta clase?',
+    answer:
+      'Dueños de marcas ecommerce que quieran maximizar sus ventas en Hot Sale, Black Friday u otra fecha promocional.',
+  },
+  {
+    question: '¿Necesito experiencia previa?',
+    answer: 'Solo necesitas tener una tienda online activa.',
+  },
+  {
+    question: '¿Cómo funciona?',
+    answer:
+      'Agendas tu cupo, recibes la confirmación, y asistes a la clase en vivo con Julián.',
+  },
+];
+---
+
+<section class="faq">
+  <div class="container faq-content">
+    <h2 class="faq-headline" data-animate>Preguntas Frecuentes</h2>
+
+    <div class="faq-list" data-animate>
+      {faqs.map((faq, i) => (
+        <details class="faq-item" data-faq>
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--light-blue);
+    padding: var(--section-padding);
+  }
+
+  .faq-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .faq-headline {
+    font-size: clamp(26px, 4vw, 36px);
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    background: var(--light-blue);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--azul-oscuro);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .faq {
+      padding: var(--section-padding-mobile);
+    }
+
+    .faq-question {
+      padding: 16px 18px;
+      font-size: 15px;
+    }
+
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 14px;
+    }
+  }
+</style>

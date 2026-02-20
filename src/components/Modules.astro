@@ -1,0 +1,185 @@
+---
+const modules = [
+  {
+    number: 1,
+    title: 'Planeación Financiera',
+    description:
+      'Hoja de ruta financiera con proyecciones basadas en datos. Sabrás exactamente cuánto puedes descontar sin perder dinero.',
+    icon: '📊',
+  },
+  {
+    number: 2,
+    title: 'Comunicación Estratégica',
+    description:
+      'Narrativa persuasiva para cada fase de la campaña. Cómo destacar cuando todas las marcas gritan "descuento".',
+    icon: '📣',
+  },
+  {
+    number: 3,
+    title: 'Ingeniería 360°',
+    description:
+      'Embudos, campañas, segmentación, anuncios y optimización hecha para escalar 5x en fechas promocionales.',
+    icon: '⚙️',
+  },
+  {
+    number: 4,
+    title: 'Páginas de Alta Conversión',
+    description:
+      'Optimización de tu tienda para aprovechar al máximo cada visitante durante el pico de tráfico.',
+    icon: '🚀',
+  },
+  {
+    number: 'B',
+    title: 'Tips de $1.5M USD',
+    description:
+      'Consejos prácticos después de facturar millones en campañas promocionales.',
+    icon: '💡',
+    isBonus: true,
+  },
+];
+---
+
+<section class="modules">
+  <div class="container modules-content">
+    <h2 class="modules-headline" data-animate>Lo que aprenderás en esta MasterClass</h2>
+    <p class="modules-subheadline" data-animate>
+      5 módulos + bonus con el sistema exacto que usamos en Lummia
+    </p>
+
+    <div class="modules-grid">
+      {modules.map((mod, i) => (
+        <div
+          class:list={['module-card', { bonus: mod.isBonus }]}
+          data-animate
+          style={`animation-delay: ${i * 100}ms`}
+        >
+          <div class="module-header">
+            <span class="module-icon">{mod.icon}</span>
+            <span class="module-number">
+              {mod.isBonus ? 'Bonus' : `Módulo ${mod.number}`}
+            </span>
+          </div>
+          <h3 class="module-title">{mod.title}</h3>
+          <p class="module-desc">{mod.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .modules {
+    background: var(--light-blue);
+    padding: var(--section-padding);
+  }
+
+  .modules-content {
+    text-align: center;
+  }
+
+  .modules-headline {
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--azul-oscuro);
+    margin-bottom: 12px;
+  }
+
+  .modules-subheadline {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .module-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .module-card.bonus {
+    grid-column: 1 / -1;
+    background: var(--amarillo);
+    border: 2px solid var(--azul-oscuro);
+  }
+
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .module-icon {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .module-number {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--azul-oscuro);
+    background: var(--light-blue);
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  .bonus .module-number {
+    background: var(--azul-oscuro);
+    color: var(--amarillo);
+  }
+
+  .module-title {
+    font-size: 19px;
+    color: var(--azul-oscuro);
+    margin-bottom: 8px;
+  }
+
+  .module-desc {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .modules {
+      padding: var(--section-padding-mobile);
+    }
+
+    .modules-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .modules-subheadline {
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .module-card {
+      padding: 22px;
+    }
+
+    .module-title {
+      font-size: 17px;
+    }
+
+    .module-desc {
+      font-size: 14px;
+    }
+  }
+</style>
