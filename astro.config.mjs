@@ -11,9 +11,7 @@ export default defineConfig({
     storyblok({
       accessToken: token,
       bridge: true,
-      apiOptions: {
-        region: 'us',
-      },
+      apiOptions: {},
       components: {
         page: 'storyblok/Page',
         hero_section: 'storyblok/HeroSection',
