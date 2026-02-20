@@ -1,0 +1,15 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import CalendlySection from '../components/CalendlySection.astro';
+
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+  <CalendlySection content={{
+    headline: blok.headline || undefined,
+    subheadline: blok.subheadline || undefined,
+    calendlyUrl: blok.calendly_url || undefined,
+    urgency: blok.urgency_text || undefined,
+  }} />
+</div>

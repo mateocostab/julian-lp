@@ -1,4 +1,29 @@
 ---
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  content?: {
+    name?: string;
+    title?: string;
+    bio?: string;
+    photo?: string;
+    stats?: StatItem[];
+  };
+}
+
+const c = Astro.props.content || {};
+const name = c.name || 'Julián Mora';
+const title = c.title || 'Co-founder & CMO de Lummia';
+const bio = c.bio || 'Lummia ha facturado más de <strong>$9.5M USD</strong> en ecommerce. Sus mejores días de ventas han sido en fechas promocionales, donde ha perfeccionado un sistema que le permite escalar de forma rentable y agresiva. En esta clase privada, Julián compartirá los 4 pilares que han hecho posible estos resultados.';
+const photo = c.photo || '/assets/julian-mora.png';
+const stats: StatItem[] = c.stats || [
+  { value: '$9.5M+', label: 'Facturados' },
+  { value: '14.5x', label: 'ROAS' },
+  { value: '+777%', label: 'Ventas' },
+];
 ---
 
 <section class="speaker">
@@ -6,8 +31,8 @@
     <div class="speaker-photo-wrap" data-animate="slide-left">
       <div class="speaker-photo">
         <img
-          src="/assets/julian-mora.png"
-          alt="Julián Mora — Co-founder & CMO de Lummia"
+          src={photo}
+          alt={`${name} — ${title}`}
           width="280"
           height="280"
           loading="lazy"
@@ -17,28 +42,17 @@
 
     <div class="speaker-info" data-animate="slide-right">
       <span class="speaker-label">Tu instructor</span>
-      <h2 class="speaker-name">Julián Mora</h2>
-      <p class="speaker-title">Co-founder & CMO de Lummia</p>
-      <p class="speaker-bio">
-        Lummia ha facturado más de <strong>$9.5M USD</strong> en ecommerce. Sus mejores días de ventas
-        han sido en fechas promocionales, donde ha perfeccionado un sistema que le permite escalar de
-        forma rentable y agresiva. En esta clase privada, Julián compartirá los 4 pilares que han
-        hecho posible estos resultados.
-      </p>
+      <h2 class="speaker-name">{name}</h2>
+      <p class="speaker-title">{title}</p>
+      <p class="speaker-bio" set:html={bio} />
 
       <div class="speaker-stats">
-        <div class="speaker-stat">
-          <span class="stat-value">$9.5M+</span>
-          <span class="stat-label">Facturados</span>
-        </div>
-        <div class="speaker-stat">
-          <span class="stat-value">14.5x</span>
-          <span class="stat-label">ROAS</span>
-        </div>
-        <div class="speaker-stat">
-          <span class="stat-value">+777%</span>
-          <span class="stat-label">Ventas</span>
-        </div>
+        {stats.map((stat) => (
+          <div class="speaker-stat">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>

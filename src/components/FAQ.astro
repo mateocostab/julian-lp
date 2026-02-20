@@ -1,29 +1,29 @@
 ---
-const faqs = [
-  {
-    question: '¿Es realmente gratis?',
-    answer: 'Sí, 100% gratuita. Sin cargos ocultos.',
-  },
-  {
-    question: '¿Para quién es esta clase?',
-    answer:
-      'Dueños de marcas ecommerce que quieran maximizar sus ventas en Hot Sale, Black Friday u otra fecha promocional.',
-  },
-  {
-    question: '¿Necesito experiencia previa?',
-    answer: 'Solo necesitas tener una tienda online activa.',
-  },
-  {
-    question: '¿Cómo funciona?',
-    answer:
-      'Agendas tu cupo, recibes la confirmación, y asistes a la clase en vivo con Julián.',
-  },
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  content?: {
+    headline?: string;
+    faqs?: FaqItem[];
+  };
+}
+
+const c = Astro.props.content || {};
+const headline = c.headline || 'Preguntas Frecuentes';
+const faqs: FaqItem[] = c.faqs || [
+  { question: '¿Es realmente gratis?', answer: 'Sí, 100% gratuita. Sin cargos ocultos.' },
+  { question: '¿Para quién es esta clase?', answer: 'Dueños de marcas ecommerce que quieran maximizar sus ventas en Hot Sale, Black Friday u otra fecha promocional.' },
+  { question: '¿Necesito experiencia previa?', answer: 'Solo necesitas tener una tienda online activa.' },
+  { question: '¿Cómo funciona?', answer: 'Agendas tu cupo, recibes la confirmación, y asistes a la clase en vivo con Julián.' },
 ];
 ---
 
 <section class="faq">
   <div class="container faq-content">
-    <h2 class="faq-headline" data-animate>Preguntas Frecuentes</h2>
+    <h2 class="faq-headline" data-animate>{headline}</h2>
 
     <div class="faq-list" data-animate>
       {faqs.map((faq, i) => (

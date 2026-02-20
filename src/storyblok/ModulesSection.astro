@@ -1,0 +1,22 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import Modules from '../components/Modules.astro';
+
+const { blok } = Astro.props;
+
+const modules = blok.modules?.map((m: any) => ({
+  number: m.number || '1',
+  title: m.title || '',
+  description: m.description || '',
+  icon: m.icon || '',
+  isBonus: m.is_bonus || false,
+})) || [];
+---
+
+<div {...storyblokEditable(blok)}>
+  <Modules content={{
+    headline: blok.headline || undefined,
+    subheadline: blok.subheadline || undefined,
+    modules: modules.length > 0 ? modules : undefined,
+  }} />
+</div>

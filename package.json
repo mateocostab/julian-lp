@@ -8,6 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/vercel": "^9.0.4",
+    "@storyblok/astro": "^7.3.9",
     "astro": "^5.0.0"
   }
 }

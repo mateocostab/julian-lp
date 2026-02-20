@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import Hero from '../components/Hero.astro';
+
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+  <Hero content={{
+    tag: blok.tag || 'SOLO 10 CUPOS DISPONIBLES',
+    headline: blok.headline || 'El Sistema de',
+    highlight: blok.highlight_text || '$1.5M USD',
+    headlineSuffix: blok.headline_suffix || 'para Dominar Fechas Promocionales',
+    subheadline: blok.subheadline || '',
+    ctaText: blok.cta_text || 'Reserva Tu Cupo Gratis',
+    microText: blok.micro_text || 'Clase gratuita — Solo 10 cupos',
+  }} />
+</div>

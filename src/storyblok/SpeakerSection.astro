@@ -1,0 +1,21 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import Speaker from '../components/Speaker.astro';
+
+const { blok } = Astro.props;
+
+const stats = blok.stats?.map((s: any) => ({
+  value: s.value || '',
+  label: s.label || '',
+})) || [];
+---
+
+<div {...storyblokEditable(blok)}>
+  <Speaker content={{
+    name: blok.name || undefined,
+    title: blok.speaker_title || undefined,
+    bio: blok.bio || undefined,
+    photo: blok.photo?.filename || undefined,
+    stats: stats.length > 0 ? stats : undefined,
+  }} />
+</div>

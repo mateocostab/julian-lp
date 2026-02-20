@@ -1,0 +1,16 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Footer from '../components/Footer.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+
+const { blok } = Astro.props;
+---
+
+<main {...storyblokEditable(blok)}>
+  {blok.body?.map((nestedBlok: any) => (
+    <StoryblokComponent blok={nestedBlok} />
+  ))}
+</main>
+<Footer />
+<StickyCTA />

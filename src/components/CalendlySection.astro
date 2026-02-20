@@ -1,27 +1,38 @@
 ---
+interface Props {
+  content?: {
+    headline?: string;
+    subheadline?: string;
+    calendlyUrl?: string;
+    urgency?: string;
+  };
+}
+
+const c = Astro.props.content || {};
+const headline = c.headline || 'Reserva Tu Cupo';
+const subheadline = c.subheadline || 'Clase privada y gratuita — Solo <strong>10 cupos</strong> disponibles';
+const calendlyUrl = c.calendlyUrl || 'https://calendly.com/julianmora_lummia/hotsale_5x?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f1ea9d&text_color=5f679e&primary_color=a6aede';
+const urgency = c.urgency || 'Una vez se llenen los 10 cupos, no habrá más disponibilidad.';
 ---
 
 <section class="calendly-section" id="reserva">
   <div class="container calendly-content">
     <div class="calendly-header" data-animate>
-      <h2 class="calendly-headline">Reserva Tu Cupo</h2>
-      <p class="calendly-subheadline">
-        Clase privada y gratuita — Solo <strong>10 cupos</strong> disponibles
-      </p>
+      <h2 class="calendly-headline">{headline}</h2>
+      <p class="calendly-subheadline" set:html={subheadline} />
     </div>
 
     <div class="calendly-widget-wrap" data-animate>
-      <!-- Calendly inline widget -->
       <div
         class="calendly-inline-widget"
-        data-url="https://calendly.com/julianmora_lummia/hotsale_5x?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f1ea9d&text_color=5f679e&primary_color=a6aede"
+        data-url={calendlyUrl}
         style="min-width:320px;height:700px;"
       ></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
 
     <p class="calendly-urgency" data-animate>
-      Una vez se llenen los 10 cupos, no habrá más disponibilidad.
+      {urgency}
     </p>
   </div>
 </section>

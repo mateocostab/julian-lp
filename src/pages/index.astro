@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { useStoryblokApi } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+// Fallback imports
 import Hero from '../components/Hero.astro';
 import MetricsBar from '../components/MetricsBar.astro';
 import Problem from '../components/Problem.astro';
@@ -9,19 +13,37 @@ import CalendlySection from '../components/CalendlySection.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
+
+let story: any = null;
+
+try {
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get('cdn/stories/home', {
+    version: 'draft',
+  });
+  story = data.story;
+} catch (e) {
+  // Storyblok not configured or content not found — use fallback
+}
 ---
 
 <Layout
   title="MasterClass: El Sistema de $1.5M USD para Dominar Fechas Promocionales — Julián Mora"
   description="Clase privada y gratuita con Julián Mora, CMO de Lummia. Aprende el sistema exacto con el que facturó $1.5M USD en el último Black Friday con un ROAS de 14.5x. Solo 10 cupos."
 >
-  <Hero />
-  <MetricsBar />
-  <Problem />
-  <Modules />
-  <Speaker />
-  <CalendlySection />
-  <FAQ />
-  <Footer />
-  <StickyCTA />
+  {story ? (
+    <StoryblokComponent blok={story.content} />
+  ) : (
+    <>
+      <Hero />
+      <MetricsBar />
+      <Problem />
+      <Modules />
+      <Speaker />
+      <CalendlySection />
+      <FAQ />
+      <Footer />
+      <StickyCTA />
+    </>
+  )}
 </Layout>

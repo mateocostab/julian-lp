@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import MetricsBar from '../components/MetricsBar.astro';
+
+const { blok } = Astro.props;
+
+const metrics = blok.metrics?.map((m: any) => ({
+  prefix: m.prefix || '',
+  value: parseFloat(m.value) || 0,
+  suffix: m.suffix || '',
+  label: m.label || '',
+  decimals: parseInt(m.decimals) || 0,
+})) || [];
+---
+
+<div {...storyblokEditable(blok)}>
+  <MetricsBar content={metrics.length > 0 ? metrics : undefined} />
+</div>

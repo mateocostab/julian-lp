@@ -1,10 +1,24 @@
 ---
-const metrics = [
+interface MetricItem {
+  prefix: string;
+  value: number;
+  suffix: string;
+  label: string;
+  decimals: number;
+}
+
+interface Props {
+  content?: MetricItem[];
+}
+
+const defaultMetrics: MetricItem[] = [
   { prefix: '$', value: 9.5, suffix: 'M USD', label: 'facturados por Lummia', decimals: 1 },
   { prefix: '$', value: 1.5, suffix: 'M USD', label: 'en el último Black Friday', decimals: 1 },
   { prefix: '', value: 14.5, suffix: 'x', label: 'ROAS en fechas promocionales', decimals: 1 },
   { prefix: '+', value: 777, suffix: '%', label: 'en ventas vs. período anterior', decimals: 0 },
 ];
+
+const metrics = Astro.props.content || defaultMetrics;
 ---
 
 <section class="metrics" data-animate>

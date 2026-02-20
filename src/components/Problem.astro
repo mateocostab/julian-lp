@@ -1,5 +1,16 @@
 ---
-const pains = [
+interface Props {
+  content?: {
+    headline?: string;
+    body?: string;
+    painPoints?: string[];
+  };
+}
+
+const c = Astro.props.content || {};
+const headline = c.headline || 'El descuento no es suficiente.';
+const body = c.body || 'La mayoría de marcas simplemente bajan precios y esperan que el tráfico haga el trabajo. Sin un sistema probado, estás dejando dinero en la mesa — y el Hot Sale se convierte en una <strong>lotería, no en una estrategia.</strong>';
+const pains = c.painPoints || [
   'Haces descuentos sin saber si realmente ganas dinero',
   'No tienes un calendario ni fases claras para tu campaña',
   'Tu comunicación se pierde entre miles de marcas gritando "DESCUENTO"',
@@ -9,12 +20,8 @@ const pains = [
 
 <section class="problem">
   <div class="container problem-content">
-    <h2 class="problem-headline" data-animate>El descuento no es suficiente.</h2>
-    <p class="problem-body" data-animate>
-      La mayoría de marcas simplemente bajan precios y esperan que el tráfico haga el trabajo.
-      Sin un sistema probado, estás dejando dinero en la mesa — y el Hot Sale se convierte en una
-      <strong>lotería, no en una estrategia.</strong>
-    </p>
+    <h2 class="problem-headline" data-animate>{headline}</h2>
+    <p class="problem-body" data-animate set:html={body} />
     <ul class="pain-list">
       {pains.map((pain, i) => (
         <li class="pain-item" data-animate data-delay={i}>

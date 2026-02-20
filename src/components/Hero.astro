@@ -1,18 +1,34 @@
 ---
+interface Props {
+  content?: {
+    tag?: string;
+    headline?: string;
+    highlight?: string;
+    headlineSuffix?: string;
+    subheadline?: string;
+    ctaText?: string;
+    microText?: string;
+  };
+}
+
+const c = Astro.props.content || {};
+const tag = c.tag || 'SOLO 10 CUPOS DISPONIBLES';
+const headline = c.headline || 'El Sistema de';
+const highlight = c.highlight || '$1.5M USD';
+const headlineSuffix = c.headlineSuffix || 'para Dominar Fechas Promocionales';
+const subheadline = c.subheadline || 'Julián Mora, Co-founder & CMO de Lummia, te enseñará en una clase privada la estrategia exacta con la que facturó <strong>$1.5M USD en el último Black Friday</strong> — con un ROAS de 14.5x';
+const ctaText = c.ctaText || 'Reserva Tu Cupo Gratis';
+const microText = c.microText || 'Clase gratuita — Solo 10 cupos';
 ---
 
 <section class="hero">
   <div class="container hero-content">
     <div class="hero-text">
-      <span class="hero-tag">SOLO 10 CUPOS DISPONIBLES</span>
+      <span class="hero-tag">{tag}</span>
       <h1 class="hero-headline">
-        El Sistema de <span class="highlight">$1.5M USD</span> para Dominar Fechas Promocionales
+        {headline} <span class="highlight">{highlight}</span> {headlineSuffix}
       </h1>
-      <p class="hero-subheadline">
-        Julián Mora, Co-founder & CMO de Lummia, te enseñará en una clase privada
-        la estrategia exacta con la que facturó <strong>$1.5M USD en el último Black Friday</strong>
-        — con un ROAS de 14.5x
-      </p>
+      <p class="hero-subheadline" set:html={subheadline} />
     </div>
 
     <div class="hero-video">
@@ -22,8 +38,8 @@
     </div>
 
     <div class="hero-cta-wrap">
-      <a href="#reserva" class="cta-button">Reserva Tu Cupo Gratis</a>
-      <p class="hero-micro">Clase gratuita — Solo 10 cupos</p>
+      <a href="#reserva" class="cta-button">{ctaText}</a>
+      <p class="hero-micro">{microText}</p>
     </div>
   </div>
 </section>

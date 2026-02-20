@@ -1,0 +1,16 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import Problem from '../components/Problem.astro';
+
+const { blok } = Astro.props;
+
+const painPoints = blok.pain_points?.map((p: any) => p.text) || [];
+---
+
+<div {...storyblokEditable(blok)}>
+  <Problem content={{
+    headline: blok.headline || undefined,
+    body: blok.body_text || undefined,
+    painPoints: painPoints.length > 0 ? painPoints : undefined,
+  }} />
+</div>

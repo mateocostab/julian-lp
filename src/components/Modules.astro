@@ -1,49 +1,37 @@
 ---
-const modules = [
-  {
-    number: 1,
-    title: 'Planeación Financiera',
-    description:
-      'Hoja de ruta financiera con proyecciones basadas en datos. Sabrás exactamente cuánto puedes descontar sin perder dinero.',
-    icon: '📊',
-  },
-  {
-    number: 2,
-    title: 'Comunicación Estratégica',
-    description:
-      'Narrativa persuasiva para cada fase de la campaña. Cómo destacar cuando todas las marcas gritan "descuento".',
-    icon: '📣',
-  },
-  {
-    number: 3,
-    title: 'Ingeniería 360°',
-    description:
-      'Embudos, campañas, segmentación, anuncios y optimización hecha para escalar 5x en fechas promocionales.',
-    icon: '⚙️',
-  },
-  {
-    number: 4,
-    title: 'Páginas de Alta Conversión',
-    description:
-      'Optimización de tu tienda para aprovechar al máximo cada visitante durante el pico de tráfico.',
-    icon: '🚀',
-  },
-  {
-    number: 'B',
-    title: 'Tips de $1.5M USD',
-    description:
-      'Consejos prácticos después de facturar millones en campañas promocionales.',
-    icon: '💡',
-    isBonus: true,
-  },
+interface ModuleItem {
+  number: string | number;
+  title: string;
+  description: string;
+  icon: string;
+  isBonus?: boolean;
+}
+
+interface Props {
+  content?: {
+    headline?: string;
+    subheadline?: string;
+    modules?: ModuleItem[];
+  };
+}
+
+const c = Astro.props.content || {};
+const headlineText = c.headline || 'Lo que aprenderás en esta MasterClass';
+const subheadlineText = c.subheadline || '5 módulos + bonus con el sistema exacto que usamos en Lummia';
+const modules: ModuleItem[] = c.modules || [
+  { number: '1', title: 'Planeación Financiera', description: 'Hoja de ruta financiera con proyecciones basadas en datos. Sabrás exactamente cuánto puedes descontar sin perder dinero.', icon: '📊' },
+  { number: '2', title: 'Comunicación Estratégica', description: 'Narrativa persuasiva para cada fase de la campaña. Cómo destacar cuando todas las marcas gritan "descuento".', icon: '📣' },
+  { number: '3', title: 'Ingeniería 360°', description: 'Embudos, campañas, segmentación, anuncios y optimización hecha para escalar 5x en fechas promocionales.', icon: '⚙️' },
+  { number: '4', title: 'Páginas de Alta Conversión', description: 'Optimización de tu tienda para aprovechar al máximo cada visitante durante el pico de tráfico.', icon: '🚀' },
+  { number: 'B', title: 'Tips de $1.5M USD', description: 'Consejos prácticos después de facturar millones en campañas promocionales.', icon: '💡', isBonus: true },
 ];
 ---
 
 <section class="modules">
   <div class="container modules-content">
-    <h2 class="modules-headline" data-animate>Lo que aprenderás en esta MasterClass</h2>
+    <h2 class="modules-headline" data-animate>{headlineText}</h2>
     <p class="modules-subheadline" data-animate>
-      5 módulos + bonus con el sistema exacto que usamos en Lummia
+      {subheadlineText}
     </p>
 
     <div class="modules-grid">
