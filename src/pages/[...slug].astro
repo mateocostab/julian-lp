@@ -1,8 +1,7 @@
 ---
 /**
  * Catch-all route for Storyblok visual editor.
- * Renders the same landing page content regardless of the URL path,
- * so Storyblok's preview iframe can load correctly.
+ * Fetches the story based on the URL slug so Storyblok's preview works.
  */
 import Layout from '../layouts/Layout.astro';
 import { useStoryblokApi } from '@storyblok/astro';
@@ -20,16 +19,17 @@ import Footer from '../components/Footer.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 
 let story: any = null;
+const slug = Astro.params.slug || 'home';
 
 try {
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get('cdn/stories/home', {
+  const { data } = await storyblokApi.get(`cdn/stories/${slug}`, {
     version: 'draft',
     cv: Date.now(),
   });
   story = data.story;
 } catch (e) {
-  // Storyblok not configured or content not found — use fallback
+  // Story not found at this slug — use fallback
 }
 ---
 

@@ -18,11 +18,14 @@ let story: any = null;
 
 try {
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get('cdn/stories/home', {
+  // Try fetching the first page-type story (slug may vary)
+  const { data: list } = await storyblokApi.get('cdn/stories', {
     version: 'draft',
     cv: Date.now(),
+    content_type: 'page',
+    per_page: 1,
   });
-  story = data.story;
+  story = list.stories?.[0] || null;
 } catch (e) {
   // Storyblok not configured or content not found — use fallback
 }
