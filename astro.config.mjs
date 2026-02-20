@@ -4,11 +4,12 @@ import { loadEnv } from 'vite';
 import vercel from '@astrojs/vercel';
 
 const env = loadEnv('', process.cwd(), 'STORYBLOK');
+const token = env.STORYBLOK_DELIVERY_API_TOKEN || process.env.STORYBLOK_DELIVERY_API_TOKEN;
 
 export default defineConfig({
   integrations: [
     storyblok({
-      accessToken: env.STORYBLOK_DELIVERY_API_TOKEN,
+      accessToken: token,
       bridge: true,
       apiOptions: {
         region: 'us',
