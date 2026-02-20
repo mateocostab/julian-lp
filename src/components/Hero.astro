@@ -16,9 +16,9 @@ const tag = c.tag || 'SOLO 10 CUPOS DISPONIBLES';
 const headline = c.headline || 'El Sistema de';
 const highlight = c.highlight || '$1.5M USD';
 const headlineSuffix = c.headlineSuffix || 'para Dominar Fechas Promocionales';
-const subheadline = c.subheadline || 'Julián Mora, Co-founder & CMO de Lummia, te enseñará en una clase privada la estrategia exacta con la que facturó <strong>$1.5M USD en el último Black Friday</strong> — con un ROAS de 14.5x';
-const ctaText = c.ctaText || 'Reserva Tu Cupo Gratis';
-const microText = c.microText || 'Clase gratuita — Solo 10 cupos';
+const subheadline = c.subheadline || 'Julián Mora, Co-founder & CMO de Lummia, te revelará en una MasterClass exclusiva para 10 personas la estrategia exacta con la que facturó <strong>$1.5M USD en el último Black Friday</strong> — con un ROAS de 14.5x';
+const ctaText = c.ctaText || 'Solicita Tu Cupo';
+const microText = c.microText || 'Solo 10 cupos — Acceso exclusivo';
 ---
 
 <section class="hero">
@@ -31,7 +31,7 @@ const microText = c.microText || 'Clase gratuita — Solo 10 cupos';
       <p class="hero-subheadline" set:html={subheadline} />
     </div>
 
-    <div class="hero-video">
+    <div class="hero-video" role="region" aria-label="Video de presentación">
       <script src="https://fast.wistia.com/player.js" async></script>
       <script src="https://fast.wistia.com/embed/862rnbn2fo.js" async type="module"></script>
       <wistia-player media-id="862rnbn2fo" aspect="1.7777777777777777"></wistia-player>
@@ -46,7 +46,7 @@ const microText = c.microText || 'Clase gratuita — Solo 10 cupos';
 
 <style>
   .hero {
-    background: var(--lila);
+    background: var(--lila-dark);
     padding: 60px 24px 72px;
     text-align: center;
     overflow: hidden;

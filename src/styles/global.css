@@ -1,6 +1,7 @@
 /* ===== CSS Custom Properties ===== */
 :root {
   --lila: #a6aede;
+  --lila-dark: #6b72ab;
   --amarillo: #f1ea9d;
   --azul-oscuro: #5f679e;
   --light-blue: #e9eaf3;
@@ -182,6 +183,49 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-button:active {
   transform: translateY(0);
+}
+
+/* ===== Focus Styles ===== */
+:focus-visible {
+  outline: 2px solid var(--amarillo);
+  outline-offset: 2px;
+}
+
+/* ===== Skip to Content ===== */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--azul-oscuro);
+  color: var(--white);
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-animate] {
+    opacity: 1 !important;
+  }
 }
 
 /* ===== Responsive ===== */

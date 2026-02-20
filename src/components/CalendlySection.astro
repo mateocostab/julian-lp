@@ -9,10 +9,10 @@ interface Props {
 }
 
 const c = Astro.props.content || {};
-const headline = c.headline || 'Reserva Tu Cupo';
-const subheadline = c.subheadline || 'Clase privada y gratuita — Solo <strong>10 cupos</strong> disponibles';
+const headline = c.headline || 'Solicita Tu Cupo';
+const subheadline = c.subheadline || 'MasterClass exclusiva — Solo <strong>10 cupos</strong> disponibles';
 const calendlyUrl = c.calendlyUrl || 'https://calendly.com/julianmora_lummia/hotsale_5x?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f1ea9d&text_color=5f679e&primary_color=a6aede';
-const urgency = c.urgency || 'Una vez se llenen los 10 cupos, no habrá más disponibilidad.';
+const urgency = c.urgency || 'Los cupos son limitados. Una vez se llenen, no habrá más disponibilidad.';
 ---
 
 <section class="calendly-section" id="reserva">
@@ -39,7 +39,7 @@ const urgency = c.urgency || 'Una vez se llenen los 10 cupos, no habrá más dis
 
 <style>
   .calendly-section {
-    background: var(--lila);
+    background: var(--lila-dark);
     padding: var(--section-padding);
   }
 

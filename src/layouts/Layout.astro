@@ -16,8 +16,9 @@ const { title, description } = Astro.props;
     <meta name="robots" content="index, follow" />
     <title>{title}</title>
 
-    <!-- Favicon -->
+    <!-- Favicon & Theme -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#6b72ab" />
 
     <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,8 +37,11 @@ const { title, description } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <!-- No-JS fallback for animations -->
+    <noscript><style>[data-animate] { opacity: 1 !important; }</style></noscript>
   </head>
   <body>
+    <a href="#main-content" class="skip-to-content">Saltar al contenido</a>
     <slot />
 
     <!-- Intersection Observer for scroll animations -->

@@ -29,12 +29,12 @@ try {
 
 <Layout
   title="MasterClass: El Sistema de $1.5M USD para Dominar Fechas Promocionales — Julián Mora"
-  description="Clase privada y gratuita con Julián Mora, CMO de Lummia. Aprende el sistema exacto con el que facturó $1.5M USD en el último Black Friday con un ROAS de 14.5x. Solo 10 cupos."
+  description="MasterClass exclusiva con Julián Mora, CMO de Lummia. Aprende el sistema exacto con el que facturó $1.5M USD en el último Black Friday con un ROAS de 14.5x. Solo 10 cupos."
 >
   {story ? (
     <StoryblokComponent blok={story.content} />
   ) : (
-    <>
+    <main id="main-content">
       <Hero />
       <MetricsBar />
       <Problem />
@@ -44,6 +44,6 @@ try {
       <FAQ />
       <Footer />
       <StickyCTA />
-    </>
+    </main>
   )}
 </Layout>
